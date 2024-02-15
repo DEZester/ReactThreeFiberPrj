@@ -8,7 +8,7 @@ import { Canvas } from '@react-three/fiber'
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <Canvas>
+    <Canvas shadows>
       <App />
     </Canvas>
   </>

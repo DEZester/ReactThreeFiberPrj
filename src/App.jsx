@@ -1,9 +1,19 @@
-import {Environment, RoundedBox, Scroll, ScrollControls, Sparkles} from "@react-three/drei";
-import {useFrame} from "@react-three/fiber";
-import {useRef} from "react";
+import {Backdrop, Environment, Float, Ring, Scroll, ScrollControls, Sparkles} from "@react-three/drei";
+import {useEffect} from "react";
 import {Robot} from "./components/Robot";
+import baffle from 'baffle'
 
 function App() {
+
+  useEffect(()=> {
+    const target = baffle('.title')
+    target.set({
+      characters: '░P░h░a░n░t░o░m░',
+      speed: 200
+    })
+    target.start()
+    target.reveal(1000,1000)
+  })
 
   return (
     <>
@@ -16,6 +26,28 @@ function App() {
       <ScrollControls pages={6} damping={0.1}>
           <Robot scale={0.8}/>
         <Sparkles size={2} color={"#fff"} scale={[10,10,10]}></Sparkles>
+        <Backdrop
+          receiveShadow
+          floor={20.5} // Stretches the floor segment, 0.25 by default
+          segments={100} // Mesh-resolution, 20 by default
+          scale={[50,30,10]}
+          position={[4,-10,0]}
+        >
+          <meshStandardMaterial color="#0a1a1f" />
+        </Backdrop>
+
+        <Float
+          speed={2.5} // Animation speed, defaults to 1
+          rotationIntensity={0.5} // XYZ rotation intensity, defaults to 1
+          floatIntensity={1} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
+          floatingRange={[1, 1]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
+        >
+          <Ring scale={4} position-z={-2.5} position-y={-1} args={[0, 0.95, 60]} receiveShadow>
+            <meshStandardMaterial color="#2a3a3f" />
+          </Ring>
+        </Float>
+
+
         <Scroll>
         </Scroll>
         <Scroll html style={{width: '100%'}}>
