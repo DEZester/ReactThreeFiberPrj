@@ -1,4 +1,4 @@
-import {Environment, RoundedBox, Scroll, ScrollControls} from "@react-three/drei";
+import {Environment, RoundedBox, Scroll, ScrollControls, Sparkles} from "@react-three/drei";
 import {useFrame} from "@react-three/fiber";
 import {useRef} from "react";
 import {Robot} from "./components/Robot";
@@ -15,6 +15,7 @@ function App() {
       />
       <ScrollControls pages={6} damping={0.1}>
           <Robot scale={0.8}/>
+        <Sparkles size={2} color={"#fff"} scale={[10,10,10]}></Sparkles>
         <Scroll>
         </Scroll>
         <Scroll html style={{width: '100%'}}>
