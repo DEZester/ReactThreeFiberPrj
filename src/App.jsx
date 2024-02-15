@@ -14,8 +14,8 @@ function App() {
         preset='warehouse'
       />
       <ScrollControls pages={6} damping={0.1}>
+          <Robot scale={0.8}/>
         <Scroll>
-          <Robot/>
         </Scroll>
         <Scroll html style={{width: '100%'}}>
           <h1 className='title' style={{
